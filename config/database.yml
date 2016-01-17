@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: localhost
+  username: postgres
+  password: postgres
+
+development:
+  <<: *default
+  database: alpha_development
+
+test:
+  <<: *default
+  database: alpha_test
+
+production:
+  <<: *default
+  database: alpha_production
+  username: alpha
+  password: <%= ENV['ALPHA_DATABASE_PASSWORD'] %>
