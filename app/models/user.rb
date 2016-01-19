@@ -19,6 +19,10 @@
 #
 
 class User < ActiveRecord::Base
+  has_many :posts, class_name: 'Post', foreign_key: 'user_id'
+  has_many :user_posts, class_name: 'UserPost', foreign_key: 'user_id'
+  has_many :liked_posts, through: :user_posts, source: :user
+
   has_many :active_relationships, class_name: 'UserRelationship',
                                   foreign_key: 'follower_id',
                                   dependent: :destroy

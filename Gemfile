@@ -26,6 +26,12 @@ gem 'annotate'
 
 gem 'devise'
 
+gem "mini_magick"
+
+gem "refile", require: "refile/rails"
+
+gem "refile-mini_magick"
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'

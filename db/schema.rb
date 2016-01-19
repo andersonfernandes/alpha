@@ -11,10 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160118005152) do
+ActiveRecord::Schema.define(version: 20160119011956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "text",               null: false
+    t.integer  "user_id",            null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_id"
+    t.string   "image_filename"
+    t.integer  "image_size"
+    t.string   "image_content_type"
+  end
+
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
+  create_table "user_posts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_posts", ["post_id"], name: "index_user_posts_on_post_id", using: :btree
+  add_index "user_posts", ["user_id"], name: "index_user_posts_on_user_id", using: :btree
 
   create_table "user_relationships", force: :cascade do |t|
     t.integer  "follower_id", null: false
@@ -45,6 +68,9 @@ ActiveRecord::Schema.define(version: 20160118005152) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "posts", "users"
+  add_foreign_key "user_posts", "posts"
+  add_foreign_key "user_posts", "users"
   add_foreign_key "user_relationships", "users", column: "followed_id"
   add_foreign_key "user_relationships", "users", column: "follower_id"
 end
