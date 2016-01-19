@@ -21,7 +21,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { create(:user) }
+  let(:user) { build(:user) }
 
   describe "validations" do
     before do

@@ -4,7 +4,7 @@
 #
 #  id                 :integer          not null, primary key
 #  text               :string           not null
-#  user_id            :integer
+#  user_id            :integer          not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  image_id           :string
@@ -15,8 +15,9 @@
 
 FactoryGirl.define do
   factory :post do
-    text "MyString"
-user nil
+    text "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+    user { FactoryGirl.create(:user) }
+    image { StringIO.new("hello") }
   end
 
 end

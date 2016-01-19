@@ -4,7 +4,7 @@
 #
 #  id                 :integer          not null, primary key
 #  text               :string           not null
-#  user_id            :integer
+#  user_id            :integer          not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  image_id           :string
@@ -16,5 +16,17 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:post) { build(:post) }
+
+  describe "validations" do
+    it 'should be invalid without text' do
+      post.text = nil
+      expect(post).not_to be_valid
+    end
+
+    it 'should be invalid without user' do
+      post.user = nil
+      expect(post).not_to be_valid
+    end
+  end
 end
