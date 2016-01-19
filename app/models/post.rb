@@ -17,6 +17,7 @@ class Post < ActiveRecord::Base
   attachment :image
 
   belongs_to :user, class_name: 'User', foreign_key: 'user_id'
+  has_many :comments, class_name: 'Comment', foreign_key: 'post_id'
 
   validates_presence_of :text, :user_id
 end

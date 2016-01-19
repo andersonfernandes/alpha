@@ -24,10 +24,6 @@ RSpec.describe User, type: :model do
   let(:user) { build(:user) }
 
   describe "validations" do
-    before do
-      user.valid?
-    end
-
     it 'should be invalid with name null' do
       user.name = nil
       expect(user).not_to be_valid
