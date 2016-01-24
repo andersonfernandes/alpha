@@ -39,4 +39,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates_presence_of :name, :email, :password, :password_confirmation
+
+  def follow user
+    active_relationships.create followed: user
+  end
+
+  def unfollow user
+    active_relationships.find_by followed_id: user.id
+  end
 end

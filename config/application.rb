@@ -14,5 +14,11 @@ Bundler.require(*Rails.groups)
 module Alpha
   class Application < Rails::Application
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Locales config
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+    config.i18n.enforce_available_locales = false
+    config.i18n.available_locales = ["pt-BR", "en"]
+    config.i18n.default_locale = :'en'
   end
 end
