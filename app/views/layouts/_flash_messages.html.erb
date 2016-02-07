@@ -3,6 +3,7 @@
     <div class="col-lg-6 col-lg-offset-3">
       <% flash.each do |type, msg| %>
         <div class="alert alert-<%= flash_for type %>">
+          <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <p class="text-center">
             <%= msg %>
           </p>
