@@ -2,7 +2,7 @@ class CustomDevise::RegistrationsController < Devise::RegistrationsController
   def update
     if @user.update user_params
       flash[:notice] = 'User successfully updated'
-      redirect_to user_path(current_user)
+      redirect_to my_profile_path
     else
       flash[:alert] = 'The user cannot be updated'
       render :edit
