@@ -1,0 +1,17 @@
+.image-upload-area {
+  width: 200px;
+  height: 200px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.image-input {
+  display: none !important;
+}

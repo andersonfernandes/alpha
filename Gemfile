@@ -32,6 +32,8 @@ gem "refile", require: "refile/rails"
 
 gem "refile-mini_magick"
 
+gem 'pace-rails'
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'

@@ -1,0 +1,23 @@
+read_url = (input) ->
+  if input.files and input.files[0]
+    reader = new FileReader
+
+    reader.onload = (e) ->
+      $('.image-upload-area img').attr 'src', e.target.result
+      return
+
+    reader.readAsDataURL input.files[0]
+
+$(document).on 'page:change', ->
+  # Image Uploads --
+  $('.image-upload-area img').on 'click', ->
+    $('.image-input').click()
+
+  $('.image-input').on 'change', ->
+    read_url(this)
+  # --
+
+  # Flash messages fade out --
+  $('.flash').on 'click', '.close', ->
+    $('.flash .alert').slideUp(400)
+  # --
