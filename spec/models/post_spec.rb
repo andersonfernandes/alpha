@@ -15,7 +15,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Post, type: :model do
+RSpec.describe Post, type: [:model, :post] do
   let(:post) { build(:post) }
 
   describe "validations" do

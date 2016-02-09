@@ -24,7 +24,7 @@
 
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe User, type: [:model, :user] do
   let(:user) { build(:user) }
 
   describe "validations" do
@@ -41,6 +41,33 @@ RSpec.describe User, type: :model do
     it 'should be invalid with password null' do
       user.password = nil
       expect(user).not_to be_valid
+    end
+  end
+
+  describe "#follow" do
+    let(:user_2) { create(:user) }
+
+    before do
+      user.save
+      user.follow user_2
+    end
+
+    it 'sould add the user to the following list' do
+      expect(user.following).to include user_2
+    end
+  end
+
+  describe "#unfollow" do
+    let(:user_2) { create(:user) }
+
+    before do
+      user.save
+      UserRelationship.create follower: user, followed: user_2
+      user.unfollow user_2
+    end
+
+    it 'sould add the user to the following list' do
+      expect(user.following).not_to include user_2
     end
   end
 end

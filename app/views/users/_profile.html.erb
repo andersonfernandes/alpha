@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="col-md-4">
-        <%= image_tag attachment_url(user, :profile_image, :fill, 200, 200, fallback: 'user-default-lg.png'), class: 'img-circle' %>
+        <%= image_tag attachment_url(user, :profile_image, :fill, 200, 200, fallback: 'user-default-lg.png'),
+                                           class: 'img-circle' %>
       </div>
 
       <div class="col-md-8">
@@ -10,9 +11,18 @@
         <h5><%= user.email %></h5>
 
         <ul class="list-inline">
-          <li>Followers</li>
-          <li>Following</li>
-          <li>Posts</li>
+          <li class="user-count">
+            <span>Followers</span>
+            <div class="text-center"><%= user.followers.size %></div>
+          </li>
+          <li class="user-count">
+            <span>Following</span>
+            <div class="text-center"><%= user.following.size %></div>
+          </li>
+          <li class="user-count">
+            <span>Posts</span>
+            <div><%= user.posts.size %></div>
+          </li>
         </ul>
       </div>
     </div>
