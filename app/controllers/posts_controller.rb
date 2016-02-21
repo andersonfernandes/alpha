@@ -6,11 +6,7 @@ class PostsController < ApplicationController
     @post = Post.new post_params
 
     if @post.save
-      current_user.posts.reload
-      render :create
-    else
-      flash[:alert] = 'This post cannot be posted'
-      render :create_fail
+      flash.now[:notice] = 'Content successfully posted'
     end
   end
 

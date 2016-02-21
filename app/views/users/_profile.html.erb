@@ -1,13 +1,11 @@
- <div class="container">
+<div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="col-md-4">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-6 col-md-offset-3 text-center profile">
         <%= image_tag attachment_url(user, :profile_image, :fill, 200, 200, fallback: 'user-default-lg.png'),
                                            class: 'img-circle' %>
-      </div>
 
-      <div class="col-md-8">
-        <h2><%= user.name %></h2>
+        <h3><%= user.name %></h3>
         <h5><%= user.email %></h5>
 
         <ul class="list-inline">
@@ -21,7 +19,7 @@
           </li>
           <li class="user-count">
             <span>Posts</span>
-            <div><%= user.posts.size %></div>
+            <div id="posts-count" class="text-center"><%= user.posts.size %></div>
           </li>
         </ul>
       </div>

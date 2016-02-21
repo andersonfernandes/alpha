@@ -1,0 +1,10 @@
+var post = JSON.parse('<%= raw @post.to_json %>');
+var valid = JSON.parse('<%= raw @post.valid?.to_json %>');
+var posts_count = '<%= raw current_user.posts.size.to_json %>'
+
+$('.flash').html("<%= j render 'layouts/flash_messages' %>");
+
+if(valid) {
+  $('#post-form #post_text').val('');
+  $('.profile #posts-count').html(posts_count);
+}

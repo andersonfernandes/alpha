@@ -1,0 +1,13 @@
+<%= simple_form_for :post, url: posts_path, remote: true, html: { id: 'post-form', multipart: true } do |f| %>
+  <%= f.input :text,
+      as: :text,
+      required: false,
+      label: false,
+      input_html: {
+        rows: 3,
+        placeholder: 'What you want to say...',
+        style: 'resize: none;'
+      } %>
+
+  <%= f.button :submit, "Post", class: 'pull-right' %>
+<% end %>

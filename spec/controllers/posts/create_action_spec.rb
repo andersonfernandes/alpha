@@ -16,8 +16,8 @@ describe PostsController, '#create', type: [:controller, :post] do
       expect(response.content_type).to eq Mime::JS
     end
 
-    it 'response status should be 200' do
-      expect(response.status).to eq 200
+    it 'should render :create template' do
+      expect(subject).to render_template :create
     end
   end
 
@@ -28,12 +28,8 @@ describe PostsController, '#create', type: [:controller, :post] do
       expect(response.content_type).to eq Mime::JS
     end
 
-    it "flash[:alert] should be 'This post cannot be posted'" do
-      expect(flash[:alert]).to eq 'This post cannot be posted'
-    end
-
-    it 'should render :create_fail template' do
-      expect(subject).to render_template :create_fail
+    it 'should render :create template' do
+      expect(subject).to render_template :create
     end
   end
 end
